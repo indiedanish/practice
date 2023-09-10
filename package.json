@@ -5,13 +5,14 @@
   "main": "app.js",
   "scripts": {
     "serve": "node app.js",
-    "start": "node app.js"  
+    "start": "node app.js",
+    "test": "echo doneTest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/indiedanish/practice.git"
   },
-  "author": "Danish",  
+  "author": "Danish",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/indiedanish/practice/issues"
