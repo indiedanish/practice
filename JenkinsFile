@@ -1,0 +1,49 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your code from your Git repository
+                checkout scm
+            }
+        }
+        
+        stage('Install Dependencies') {
+            steps {
+                // Install Node.js dependencies
+                bat 'npm install'
+            }
+        }
+        
+        stage('Run Tests') {
+            steps {
+                // Run tests, replace 'npm test' with your actual test command
+                bat 'npm test'
+            }
+        }
+        
+        stage('Archive Artifacts') {
+            steps {
+                // Archive build artifacts (e.g., build artifacts, test results)
+                archiveArtifacts artifacts: '**/target/*.zip', allowEmptyArchive: true
+            }
+        }
+    }
+    
+    post {
+        success {
+            // This block executes if the build is successful
+            echo 'Build successful! Deploying...'
+            
+            // Add deployment steps here if needed
+            // Example: bat 'npm deploy'
+        }
+        failure {
+            // This block executes if the build fails
+            echo 'Build failed! Sending notifications...'
+            
+            // Add notification steps here if needed
+        }
+    }
+}
