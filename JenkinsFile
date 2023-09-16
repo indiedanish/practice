@@ -31,7 +31,7 @@ pipeline {
             steps {
                 // Push the Docker image to your Docker registry
                 withCredentials([usernamePassword(credentialsId: 'docker-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh 'sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD demo'
+                    sh 'sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD indiedanish/demo'
                     sh 'sudo docker push demo:v1'
                 }
             }
